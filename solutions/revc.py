@@ -8,7 +8,8 @@ def revc(dnastring):
         Return: The reverse complement sc of s. 
         
         >>> revc("AAAACCCGGT")
-        "ACCGGGTTTT" '''
+        'ACCGGGTTTT'
+        '''
 
     translation = maketrans("ATCG", "TAGC")
     return translate(dnastring, translation)[::-1]

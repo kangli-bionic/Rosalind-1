@@ -5,10 +5,15 @@ def rna(rnastring):
 
         Given: A DNA string t having length at most 1000 nt.
 
-        Return: The transcribed RNA string of t. 
+        Return: The transcribed RNA string of t.
         
         >>> rna("GATGGAACTTGACTACGTAAATT")
-        ... "GAUGGAACUUGACUACGUAAAUU" '''
+        'GAUGGAACUUGACUACGUAAAUU'
+        '''
 
-    translation = maketrans("T", "U")
-    return translate(rnastring, translation)[::-1]
+    translation = maketrans('T', 'U')
+    return translate(rnastring, translation)
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
