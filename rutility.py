@@ -26,26 +26,29 @@ Fasta = namedtuple("Fasta", "name, data")
 
 def fasta(iterator):
     ''' Parses an iterator or file object into discrete fasta objects. '''
-    results = (iterator.next(), [])
-    item = iterator.next()
+    name = iterator.next().strip()[1:]
+    results = [iterator.next().strip()]
+    item = iterator.next().strip()
     while True:
         if item[0] == ">":
-            yield Fasta(results[0][1:], "".join(results[1]))
-            results = (item, [])
+            yield Fasta(name, "".join(results))
+            results = [iterator.next().strip()]
+            name, item = item[1:], iterator.next().strip()
+
         else:
-            results[-1].append(item)
-        try:
-            item = iterator.next()
-        except StopIteration:
-            break
-    yield Fasta(results[0][1:], "".join(results[1]))
+            results.append(item)
+            try:
+                item = iterator.next().strip()
+            except StopIteration:
+                break
+    yield Fasta(name, "".join(results))
 
 def fastatest():
     ''' Test function for the fasta parser. 
     >>> fastatest()
     Fastatest pass!
     '''
-    testdata = iter([i.strip() for i in """>Rosalind_6404
+    testdata = iter([i for i in """>Rosalind_6404
     CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
     TCCCACTAATAATTCTGAGG
     >Rosalind_5959
@@ -54,9 +57,13 @@ def fastatest():
     >Rosalind_0808
     CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
     TGGGAACCTGCGGGCAGTAGGTGGAAT""".split('\n')])
-    fast = fasta(testdata)
-    a, b, c = fast.next(), fast.next(), fast.next()
-    assert a.name=='Rosalind_6404' and a.data=='CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'
-    assert b.name=='Rosalind_5959' and b.data=='CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC'
-    assert c.name=='Rosalind_0808' and c.data=='CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT'
-    print "Fastatest pass!"
+    f = readfile('fastatest.txt')
+    with f:
+        tests = (fasta(testdata), fasta(f))  # hard coded test data, loaded test data
+        for test in tests:
+            a, b, c = test.next(), test.next(), test.next()
+            assert a.name=='Rosalind_6404' and a.data=='CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'
+            assert b.name=='Rosalind_5959' and b.data=='CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC'
+            assert c.name=='Rosalind_0808' and c.data=='CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT'
+
+        print "Fastatest pass!"
