@@ -50,3 +50,4 @@ def problem_hamm():
     with f:
         s, t = f.next(), f.next()
         lineoutput(hamm(s, t))
+
