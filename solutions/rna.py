@@ -13,7 +13,3 @@ def rna(rnastring):
 
     translation = maketrans('T', 'U')
     return translate(rnastring, translation)
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()
