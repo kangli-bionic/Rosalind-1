@@ -1,5 +1,4 @@
 import os
-
 import solutions
 import rutility
 from rutility import lineoutput
@@ -44,3 +43,10 @@ def problem_gc():
         lineoutput(result.name)
         lineoutput(gc(result))
 
+def problem_hamm():
+    ''' http://rosalind.info/problems/hamm/ '''
+    from solutions.hamm import hamm
+    f = readfile('rosalind_hamm.txt')
+    with f:
+        s, t = f.next(), f.next()
+        lineoutput(hamm(s, t))
