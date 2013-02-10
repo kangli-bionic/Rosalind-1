@@ -58,3 +58,11 @@ def problem_prot():
     with f:
         for line in f:
             lineoutput(prot(line))
+
+def problem_subs():
+    ''' http://rosalind.info/problems/subs/ '''
+    from solutions.subs import subs
+    f = readfile('rosalind_subs.txt')
+    with f:
+        dna, sub = f.next(), f.next()
+        listoutput(subs(dna, sub))

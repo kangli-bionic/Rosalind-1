@@ -1,4 +1,5 @@
 from collections import namedtuple
+from fileops import readfile
 
 Fasta = namedtuple("Fasta", "name, data")
 
@@ -26,6 +27,7 @@ def fastatest():
     >>> fastatest()
     Fastatest pass!
     '''
+    # static data
     testdata = iter([i for i in """>Rosalind_6404
     CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
     TCCCACTAATAATTCTGAGG
@@ -35,9 +37,11 @@ def fastatest():
     >Rosalind_0808
     CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
     TGGGAACCTGCGGGCAGTAGGTGGAAT""".split('\n')])
+
+    # data from a file
     f = readfile('fastatest.txt')
     with f:
-        tests = (fasta(testdata), fasta(f))  # hard coded test data, loaded test data
+        tests = (fasta(testdata), fasta(f))
         for test in tests:
             a, b, c = test.next(), test.next(), test.next()
             assert a.name=='Rosalind_6404' and a.data=='CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'
