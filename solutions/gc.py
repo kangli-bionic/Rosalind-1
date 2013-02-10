@@ -1,4 +1,4 @@
-from rutility import fasta, Fasta
+from rutility.parsers import fasta, Fasta
 
 def gc(fasta):
     ''' Rosalind Problem 4

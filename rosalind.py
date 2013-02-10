@@ -1,9 +1,9 @@
 import os
 import solutions
 import rutility
-from rutility import lineoutput
-from rutility import listoutput
-from rutility import readfile
+from rutility.fileops import lineoutput
+from rutility.fileops import listoutput
+from rutility.fileops import readfile
 
 # The datasets for project rosalind are randomly generated.
 # The data file presented is therefore only one of many possible.
@@ -35,7 +35,7 @@ def problem_revc():
 def problem_gc():
     ''' http://rosalind.info/problems/gc/ '''
     from solutions.gc import gc
-    from rutility import fasta
+    from rutility.parsers import fasta
     f = readfile('rosalind_gc.txt')
     with f:
         iterfasta = fasta(f)
@@ -51,3 +51,10 @@ def problem_hamm():
         s, t = f.next(), f.next()
         lineoutput(hamm(s, t))
 
+def problem_prot():
+    ''' http://rosalind.info/problems/prot/ '''
+    from solutions.prot import prot
+    f = readfile('rosalind_prot.txt')
+    with f:
+        for line in f:
+            lineoutput(prot(line))
