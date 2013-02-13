@@ -51,6 +51,14 @@ def problem_hamm():
         s, t = f.next(), f.next()
         lineoutput(hamm(s, t))
 
+def problem_iprb():
+    ''' http://rosalind.info/problems/iprb/ '''
+    from solutions.iprb import iprb
+    f = readfile('rosalind_iprb.txt')
+    with f:
+        d, h, r = [int(i) for i in f.next().split()]
+        lineoutput(iprb(d, h, r))
+
 def problem_prot():
     ''' http://rosalind.info/problems/prot/ '''
     from solutions.prot import prot
