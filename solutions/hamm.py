@@ -1,5 +1,7 @@
 def hamm(s, t):
     ''' Rosalind Problem 5
+    Counting Point Mutations
+
     Given: Two DNA strings s and t of equal length 
     (not exceeding 1 kbp).
 
