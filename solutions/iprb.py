@@ -14,7 +14,7 @@ def iprb(d, h, r):
     will produce an individual possessing a dominant allele (and thus 
     displaying the dominant phenotype). Assume that any two organisms can mate.
     
-    >>>iprb(2, 2, 2)
+    >>> iprb(2, 2, 2)
     0.78333
     '''
     total = float(sum((d, h, r)))

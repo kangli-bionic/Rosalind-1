@@ -4,27 +4,21 @@ from fileops import readfile
 Fasta = namedtuple("Fasta", "name, data")
 
 def fasta(iterator):
-    ''' Parses an iterator or file object into discrete fasta objects. '''
-    name = iterator.next().strip()[1:]
     results = [iterator.next().strip()]
-    item = iterator.next().strip()
-    while True:
-        if item[0] == ">":
-            yield Fasta(name, "".join(results))
-            results = [iterator.next().strip()]
-            name, item = item[1:], iterator.next().strip()
-
-        else:
-            results.append(item)
-            try:
+    try:
+        while True:
+            item = iterator.next().strip()
+            while item[0] != '>':
+                results.append(item)
                 item = iterator.next().strip()
-            except StopIteration:
-                break
-    yield Fasta(name, "".join(results))
-
-def fastatest():
+            yield Fasta(results[0][1:], ''.join(results[1:]))
+            results = [item]
+    except:
+        yield Fasta(results[0][1:], ''.join(results[1:]))
+    
+def fastatest(fn):
     ''' Test function for the fasta parser. 
-    >>> fastatest()
+    >>> fastatest(fasta)
     Fastatest pass!
     '''
     # static data
@@ -41,9 +35,9 @@ def fastatest():
     # data from a file
     f = readfile('fastatest.txt')
     with f:
-        tests = (fasta(testdata), fasta(f))
-        for test in tests:
-            a, b, c = test.next(), test.next(), test.next()
+        tests = (fn(testdata), fn(f))
+        for t in tests:
+            a, b, c = t.next(), t.next(), t.next()
             assert a.name=='Rosalind_6404' and a.data=='CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG'
             assert b.name=='Rosalind_5959' and b.data=='CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC'
             assert c.name=='Rosalind_0808' and c.data=='CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT'

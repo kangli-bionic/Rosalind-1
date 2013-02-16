@@ -74,3 +74,24 @@ def problem_subs():
     with f:
         dna, sub = f.next(), f.next()
         listoutput(subs(dna, sub))
+
+def problem_cons():
+    ''' http://rosalind.info/problems/cons/ '''
+    from solutions.cons import cons
+    from rutility.parsers import fasta
+    f = readfile('rosalind_cons.txt')
+    with f:
+        iterfasta = fasta(f)
+        collection = [i.data for i in iterfasta]
+        consensus, matrix = cons(collection)
+        lineoutput(consensus)
+        listoutput(matrix[0], prefix='A: ')
+        listoutput(matrix[1], prefix='C: ')
+        listoutput(matrix[2], prefix='G: ')
+        listoutput(matrix[3], prefix='T: ')
+
+def test():
+    while True:
+        yield 1
+        yield 2
+        break
