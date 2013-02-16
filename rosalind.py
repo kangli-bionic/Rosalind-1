@@ -90,8 +90,13 @@ def problem_cons():
         listoutput(matrix[2], prefix='G: ')
         listoutput(matrix[3], prefix='T: ')
 
-def test():
-    while True:
-        yield 1
-        yield 2
-        break
+def problem_perm():
+    ''' http://rosalind.info/problems/perm/ '''
+    from solutions.perm import perm
+    f = readfile('rosalind_perm.txt')
+    with f:
+        n = int(f.next())
+        total, perms = perm(n)
+        lineoutput(total)
+        for p in perms:
+            listoutput(p)
