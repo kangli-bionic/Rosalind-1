@@ -100,3 +100,14 @@ def problem_perm():
         lineoutput(total)
         for p in perms:
             listoutput(p)
+
+def problem_grph():
+    ''' http://rosalind.info/problems/grph/ '''
+    from solutions.grph import grph
+    from rutility.parsers import fasta
+    f = readfile('rosalind_grph.txt')
+    with f:
+        iterfasta = fasta(f)
+        gs = grph(iterfasta, 3)
+        for g in gs:
+            listoutput(g)
