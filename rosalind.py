@@ -111,3 +111,10 @@ def problem_grph():
         gs = grph(iterfasta, 3)
         for g in gs:
             listoutput(g)
+
+def problem_iev():
+    ''' http://rosalind.info/problems/iev/ '''
+    from solutions.iev import iev
+    f = readfile('rosalind_iev.txt')
+    with f:
+        lineoutput(iev([int(i) for i in f.next().split()]))

@@ -15,7 +15,7 @@ def grph(fastas, sub):
     ...                     '>Rosalind_2391 AAATTTT '
     ...                     '>Rosalind_2323 TTTTCCC '
     ...                     '>Rosalind_0442 AAATCCC '
-    ...                     ' >Rosalind_5013 GGGTGGG '.split()))
+    ...                     '>Rosalind_5013 GGGTGGG '.split()))
     >>> for g in grph(fastas, 3):
     ...     print g
     ('Rosalind_0498', 'Rosalind_2391')
