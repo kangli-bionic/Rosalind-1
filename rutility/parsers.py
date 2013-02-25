@@ -1,5 +1,6 @@
 from collections import namedtuple
 from fileops import readfile
+from itertools import izip_longest
 
 Fasta = namedtuple("Fasta", "name, data")
 
@@ -49,3 +50,10 @@ def triplets(nts):
     nts_iter = iter(nts)
     while True:
         yield ''.join((nts_iter.next(), nts_iter.next(), nts_iter.next()))
+         
+def grouper(iterable, n):
+    "Collect data into fixed-length chunks or blocks"
+    args = [iter(iterable)] * n
+    pick = izip_longest(fillvalue=None, *args)
+    while True:
+        yield [i for i in pick.next() if i]
