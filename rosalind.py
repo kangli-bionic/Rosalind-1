@@ -119,6 +119,9 @@ def problem_iev():
     with f:
         lineoutput(iev([int(i) for i in f.next().split()]))
 
+def problem_fib():
+    ''' '''
+
 def problem_lcsm():
     ''' http://rosalind.info/problems/lcsm/ '''
     from solutions.lcsm import lcsm

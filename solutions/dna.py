@@ -1,6 +1,5 @@
 def dna(dnastring):
-    ''' Rosalind Problem 1
-    Counting DNA Nucleotides.
+    ''' Counting DNA Nucleotides
 
     Given: A DNA string s of length at most 1000 nt.
 

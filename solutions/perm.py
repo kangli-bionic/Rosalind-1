@@ -2,8 +2,7 @@ from itertools import permutations
 from math import factorial
 
 def perm(n):
-    ''' Rosalind Problem 10
-    Enumerating Gene Orders.
+    ''' Enumerating Gene Orders
 
     Given: A positive integer n ? 7.
 

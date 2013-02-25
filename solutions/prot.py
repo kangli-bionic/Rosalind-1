@@ -2,8 +2,7 @@ from rutility.maps import rna_codons
 from rutility.parsers import triplets
 
 def prot(rna):
-    ''' Rosalind Problem 7
-    Protein Translation
+    ''' Protein Translation
 
     Given: An RNA string s corresponding to a strand of mRNA
     (of length at most 10 kbp).

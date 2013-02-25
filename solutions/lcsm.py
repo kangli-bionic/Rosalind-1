@@ -1,7 +1,8 @@
 from rutility.utility import common_substrings
 
 def lcsm(collection):
-    ''' Rosalind Problem 14
+    ''' Finding a Shared Motif
+
     Given: A collection of k (k<100) DNA strings of length 
     at most 1 kbp each in FASTA format.
 

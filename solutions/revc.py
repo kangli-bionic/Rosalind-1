@@ -1,7 +1,6 @@
 from string import translate, maketrans
 def revc(dnastring):
-    ''' Rosalind Problem 3
-    The Secondary and Tertiary Structures of DNA
+    ''' The Secondary and Tertiary Structures of DNA
 
     Given: A DNA string s of length at most 1000 bp.
 

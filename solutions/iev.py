@@ -1,5 +1,7 @@
 def iev(genotypes):
-    ''' Given: Six positive integers, each of which does not 
+    ''' Calculating Expected Offspring
+    
+    Given: Six positive integers, each of which does not 
     exceed 20,000. The integers correspond to the number of 
     couples in a population possessing each genotype pairing 
     for a given factor. In order, the six given integers 

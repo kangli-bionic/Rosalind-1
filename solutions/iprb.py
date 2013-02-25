@@ -1,8 +1,7 @@
 from itertools import product
 
 def iprb(d, h, r):
-    ''' Rosalind Problem 6
-    Mendel's First Law
+    ''' Mendel's First Law
 
     Given: Three positive integers k, m, and n, representing a 
     population containing d+h+r organisms: 

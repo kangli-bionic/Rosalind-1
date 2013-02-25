@@ -1,8 +1,7 @@
 from rutility.parsers import fasta, Fasta
 
 def gc(fasta):
-    ''' Rosalind Problem 4
-    Identifying Unknown DNA Quickly.
+    ''' Identifying Unknown DNA Quickly
 
     Given: At most 10 DNA strings in FASTA format (of length at most 1 kbp each).
 

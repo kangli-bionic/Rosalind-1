@@ -1,6 +1,5 @@
 def subs(dna, sub):
-    ''' Rosalind Problem 8
-    Finding a Motif in DNA
+    ''' Finding a Motif in DNA
 
     Given: Two DNA strings s and t (each of length at most 1 kbp).
 

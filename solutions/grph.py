@@ -1,8 +1,7 @@
 from collections import defaultdict
 
 def grph(fastas, sub):
-    ''' Rosalind Problem 11
-    Overlap Graphs
+    ''' Overlap Graphs
     
     Given: A collection of DNA strings in FASTA format having
     total length at most 10 kbp.

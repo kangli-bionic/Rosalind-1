@@ -1,6 +1,5 @@
 def cons(collection):
-    ''' Rosalind Problem 9
-    Consensus and Profile
+    ''' Consensus and Profile
     
     Given: A collection of at most 10 DNA strings of equal length
     (at most 1 kbp) in FASTA format.
