@@ -118,3 +118,15 @@ def problem_iev():
     f = readfile('rosalind_iev.txt')
     with f:
         lineoutput(iev([int(i) for i in f.next().split()]))
+
+def problem_lcsm():
+    ''' http://rosalind.info/problems/lcsm/ '''
+    from solutions.lcsm import lcsm
+    from rutility.parsers import fasta
+    f = readfile('rosalind_lcsm.txt')
+    with f:
+        iterfasta = fasta(f)
+        collection = [i.data for i in iterfasta]
+        lineoutput(lcsm(collection))
+
+        problem_lcsm()
