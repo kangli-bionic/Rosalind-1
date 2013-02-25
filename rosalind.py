@@ -100,7 +100,7 @@ def problem_perm():
         lineoutput(total)
         for p in perms:
             listoutput(p)
-
+             
 def problem_grph():
     ''' http://rosalind.info/problems/grph/ '''
     from solutions.grph import grph
@@ -120,7 +120,12 @@ def problem_iev():
         lineoutput(iev([int(i) for i in f.next().split()]))
 
 def problem_fib():
-    ''' '''
+    ''' http://rosalind.info/problems/fib/ '''
+    from solutions.fib import fib
+    f = readfile('rosalind_fib.txt')
+    with f:
+        n, k = [int(i) for i in f.next().split()]
+        lineoutput(fib(n, k))
 
 def problem_lcsm():
     ''' http://rosalind.info/problems/lcsm/ '''
@@ -131,5 +136,3 @@ def problem_lcsm():
         iterfasta = fasta(f)
         collection = [i.data for i in iterfasta]
         lineoutput(lcsm(collection))
-
-        problem_lcsm()
