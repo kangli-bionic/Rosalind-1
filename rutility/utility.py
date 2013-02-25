@@ -1,6 +1,8 @@
 from string import maketrans
 from parsers import grouper
 from numpy import *
+from decorator import decorator
+import functools
 
 def suffix_array(s):
     ''' Generates a suffix array in linear time. '''
@@ -117,6 +119,7 @@ def search_suffix_trie(trie, s):
     return True
 
 # memoization functions
+@decorator
 def memodict(f):
     """ Memoization decorator for a function taking a single argument """
     class memodict(dict):
@@ -126,12 +129,17 @@ def memodict(f):
     return memodict().__getitem__
 
 def memoize(f):
-    """ Memoization decorator for a function taking one or more arguments. """
-    class memodict(dict):
-        def __getitem__(self, *key):
-            return dict.__getitem__(self, key)
-
-        def __missing__(self, key):
-            ret = self[key] = f(*key)
-            return ret
-    return memodict().__getitem__
+    f.cache = {}
+    @functools.wraps(f)
+    def memoize(*args, **kw):
+        if kw: # frozenset is used to ensure hashability
+            key = args, frozenset(kw.iteritems())
+        else:
+            key = args
+        cache = f.cache
+        if key in cache:
+            return cache[key]
+        else:
+            cache[key] = result = f(*args, **kw)
+            return result
+    return functools.update_wrapper(memoize, f)
