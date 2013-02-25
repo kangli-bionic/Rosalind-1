@@ -4,7 +4,7 @@ from rutility.utility import memoize
 def fib(n, k):
     ''' Rabbits and Recurrence Relations
 
-    Given: Positive integers n?40 and k?5.
+    Given: Positive integers n<=40 and k<=5.
 
     Return: The total number of rabbit pairs that will be present 
     after n (n?36) months if each pair of reproduction-age rabbits 
