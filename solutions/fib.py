@@ -12,7 +12,8 @@ def fib(n, k):
     (instead of only 1 pair).
     
     >>> fib(5, 3)
-    19'''
+    19
+    '''
     if n < 2:
         return n
     else:
