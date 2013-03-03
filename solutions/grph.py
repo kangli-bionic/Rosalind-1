@@ -1,15 +1,16 @@
 from collections import defaultdict
 
+
 def grph(fastas, sub):
     ''' Overlap Graphs
-    
+
     Given: A collection of DNA strings in FASTA format having
     total length at most 10 kbp.
 
-    Return: The adjacency list corresponding to O sub 3. 
+    Return: The adjacency list corresponding to O sub 3.
     You may return edges in any order.
 
-    >>> from rutility.parsers import fasta 
+    >>> from rutility.parsers import fasta
     >>> fastas = fasta(iter('>Rosalind_0498 AAATAAA '
     ...                     '>Rosalind_2391 AAATTTT '
     ...                     '>Rosalind_2323 TTTTCCC '
@@ -23,7 +24,7 @@ def grph(fastas, sub):
     '''
 
     heads_dict, tails_dict = defaultdict(list), defaultdict(list)
-    
+
     for f in fastas:
         heads_dict[f.data[:sub]].append(f.name)
         tails_dict[f.data[-sub:]].append(f.name)
@@ -37,4 +38,3 @@ def grph(fastas, sub):
         for tail in tails:
             if tail != head:
                 yield head, tail
-

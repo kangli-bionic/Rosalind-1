@@ -1,19 +1,20 @@
 from itertools import product
 
+
 def iprb(d, h, r):
     ''' Mendel's First Law
 
-    Given: Three positive integers k, m, and n, representing a 
-    population containing d+h+r organisms: 
+    Given: Three positive integers k, m, and n, representing a
+    population containing d+h+r organisms:
     d - homozygous dominant
     h - heterozygous
     r - homozygous recessive
 
-    Return: The probability that two randomly selected mating organisms 
-    will produce an individual possessing a dominant allele (and thus 
+    Return: The probability that two randomly selected mating organisms
+    will produce an individual possessing a dominant allele (and thus
     displaying the dominant phenotype). Assume that any two organisms can mate.
-    
-    >>> iprb(2, 2, 2)
+
+    >>> round(iprb(2, 2, 2), 5)
     0.78333
     '''
     total = float(sum((d, h, r)))
@@ -35,19 +36,16 @@ def iprb(d, h, r):
               dr, hr, rr]
 
     coefficients = [1.0, 1.0,  1.0,
-                    1.0, 0.75, 0.5, 
+                    1.0, 0.75, 0.5,
                     1.0, 0.5,  0.0]
 
     # matrix:
     #
-    #     d   h   r    
+    #     d   h   r
     # d  dd  hd  rd     dd == 100%    hh == 50%
     # h  dh  hh  rh     hd == 100%    hr == 25%
     # r  dr  hr  rr     rd == 100%    rr ==  0%
     # to display the dominant phenotypes,
     # multiply by the coefficients, and sum the array.
 
-    return round(sum(x * y for x, y in zip(coefficients, matrix)),5)
-
-    
-    
+    return sum(x * y for x, y in zip(coefficients, matrix))

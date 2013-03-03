@@ -1,6 +1,7 @@
 from rutility.maps import rna_codons
 from rutility.parsers import triplets
 
+
 def prot(rna):
     ''' Protein Translation
 
@@ -8,7 +9,7 @@ def prot(rna):
     (of length at most 10 kbp).
 
     Return: The protein string encoded by s.
-        
+
     >>> rna = 'AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA'
     >>> prot(rna)
     'MAMAPRTEINSTRING'
