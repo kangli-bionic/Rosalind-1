@@ -8,6 +8,7 @@ from rutility.fileops import readfile
 # The datasets for project rosalind are randomly generated.
 # The data file presented is therefore only one of many possible.
 
+
 def problem_dna():
     ''' http://rosalind.info/problems/dna/ '''
     from solutions.dna import dna
@@ -15,6 +16,7 @@ def problem_dna():
     with f:
         for line in f:
             listoutput(dna(line))
+
 
 def problem_rna():
     ''' http://rosalind.info/problems/rna/ '''
@@ -24,6 +26,7 @@ def problem_rna():
         for line in f:
             lineoutput(rna(line))
 
+
 def problem_revc():
     ''' http://rosalind.info/problems/revc/ '''
     from solutions.revc import revc
@@ -31,6 +34,7 @@ def problem_revc():
     with f:
         for line in f:
             lineoutput(revc(line))
+
 
 def problem_gc():
     ''' http://rosalind.info/problems/gc/ '''
@@ -43,6 +47,7 @@ def problem_gc():
         lineoutput(result.name)
         lineoutput(gc(result))
 
+
 def problem_hamm():
     ''' http://rosalind.info/problems/hamm/ '''
     from solutions.hamm import hamm
@@ -50,6 +55,7 @@ def problem_hamm():
     with f:
         s, t = f.next(), f.next()
         lineoutput(hamm(s, t))
+
 
 def problem_iprb():
     ''' http://rosalind.info/problems/iprb/ '''
@@ -59,6 +65,7 @@ def problem_iprb():
         d, h, r = [int(i) for i in f.next().split()]
         lineoutput(iprb(d, h, r))
 
+
 def problem_prot():
     ''' http://rosalind.info/problems/prot/ '''
     from solutions.prot import prot
@@ -67,6 +74,7 @@ def problem_prot():
         for line in f:
             lineoutput(prot(line))
 
+
 def problem_subs():
     ''' http://rosalind.info/problems/subs/ '''
     from solutions.subs import subs
@@ -74,6 +82,7 @@ def problem_subs():
     with f:
         dna, sub = f.next(), f.next()
         listoutput(subs(dna, sub))
+
 
 def problem_cons():
     ''' http://rosalind.info/problems/cons/ '''
@@ -90,6 +99,7 @@ def problem_cons():
         listoutput(matrix[2], prefix='G: ')
         listoutput(matrix[3], prefix='T: ')
 
+
 def problem_perm():
     ''' http://rosalind.info/problems/perm/ '''
     from solutions.perm import perm
@@ -100,7 +110,8 @@ def problem_perm():
         lineoutput(total)
         for p in perms:
             listoutput(p)
-             
+
+
 def problem_grph():
     ''' http://rosalind.info/problems/grph/ '''
     from solutions.grph import grph
@@ -112,12 +123,14 @@ def problem_grph():
         for g in gs:
             listoutput(g)
 
+
 def problem_iev():
     ''' http://rosalind.info/problems/iev/ '''
     from solutions.iev import iev
     f = readfile('rosalind_iev.txt')
     with f:
         lineoutput(iev([int(i) for i in f.next().split()]))
+
 
 def problem_fib():
     ''' http://rosalind.info/problems/fib/ '''
@@ -126,6 +139,7 @@ def problem_fib():
     with f:
         n, k = [int(i) for i in f.next().split()]
         lineoutput(fib(n, k))
+
 
 def problem_lcsm():
     ''' http://rosalind.info/problems/lcsm/ '''
@@ -136,3 +150,12 @@ def problem_lcsm():
         iterfasta = fasta(f)
         collection = [i.data for i in iterfasta]
         lineoutput(lcsm(collection))
+
+
+def problem_lia():
+    ''' http://rosalind.info/problems/lia/ '''
+    from solutions.lia import lia
+    f = readfile('rosalind_lia.txt')
+    with f:
+        k, n = [int(i) for i in f.next().split()]
+        lineoutput(lia(k, n))
