@@ -25,12 +25,12 @@ rna_codons = {'GUC': 'V', 'ACC': 'T', 'GUA': 'V', 'GUG': 'V',
               'CGA': 'R', 'GCU': 'A', 'UAG': 'Stop', 'AUU': 'I',
               'UUG': 'L', 'UUA': 'L', 'CGC': 'R', 'UUC': 'F'}
 
-mendel_hybrid_mating = {'d': 'ddhh', 'h': 'dhhr', 'r': 'hhrr'}
+hybrid_mating = {'h': 'dhhr', 'r': 'hhrr', 'd': 'ddhh'}
 
-mendel_hybrid = {k: ''.join(v) for k, v in
-                 zip('dhr', combinations_with_replacement('Aa', 2))}
+hybrid = {k: ''.join(v) for k, v in
+          zip('dhr', combinations_with_replacement('Aa', 2))}
 
-mendel_dihybrid = {k: ''.join(v) for k, v in
-                   zip('abcdefghijklmnop',
-                       [list(chain(x, y)) for x, y in
-                        product(product('Aa', 'Aa'), product('Bb', 'Bb'))])}
+dihybrid = {k: ''.join(v) for k, v in
+            zip('abcdefghijklmnop',
+                [list(chain(x, y)) for x, y in
+                 product(product('Aa', 'Aa'), product('Bb', 'Bb'))])}

@@ -12,15 +12,13 @@ def descendants(map, pop, gen):
     matching the mendellian to results of that type.
     gen is the number of generations to iterate over.
 
-    >>> from maps import mendel_hybrid_mating as m
+    >>> from maps import hybrid_mating as m
     >>> descendants(m, 'h', 0)
     'h'
     >>> descendants(m, 'h', 1)
     'dhhr'
     >>> descendants(m, 'h', 2)
     'ddhhdhhrdhhrhhrr'
-    >>> descendants(m, 'h', 3)
-    'ddhhddhhdhhrdhhrddhhdhhrdhhrhhrrddhhdhhrdhhrhhrrdhhrdhhrhhrrhhrr'
     '''
     if gen == 0:
         return pop
