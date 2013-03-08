@@ -1,7 +1,9 @@
 from collections import namedtuple
 from fileops import readfile
 from itertools import izip_longest
-
+import requests
+import re
+from maps import rna_codons
 
 Fasta = namedtuple("Fasta", "name, data")
 
@@ -65,8 +67,55 @@ def triplets(nts):
 
 
 def grouper(iterable, n):
-    "Collect data into fixed-length chunks or blocks"
+    ''' Collect data into fixed-length chunks or blocks. '''
     args = [iter(iterable)] * n
     pick = izip_longest(fillvalue=None, *args)
     while True:
         yield [i for i in pick.next() if i]
+
+
+def uniprot(protname):
+    ''' Given a UniProt access ID, returns that ID's fasta object.'''
+    website = r'http://www.uniprot.org/uniprot/{}.fasta'.format(protname)
+    r = requests.get(website)
+    return fasta(iter(r.text.split('\n'))).next()
+
+
+def _protein_motif(shorthand):
+    ''' Returns a list of sets to iteratively match objects with. '''
+    sh = iter(shorthand)
+
+    codons = set(rna_codons.values())
+    codons.remove('Stop')
+    include, exclude = set('[]'), set('{}')
+
+    temp = []
+    while True:
+        s = sh.next()
+        if s not in include | exclude:
+            yield set(s)
+
+        if s in include:
+            s = sh.next()
+            while s not in include:
+                temp.append(s)
+                s = sh.next()
+            yield set(temp)
+            temp = []
+
+        if s in exclude:
+            s = sh.next()
+            while s not in exclude:
+                temp.append(s)
+                s = sh.next()
+            yield codons - set(temp)
+            temp = []
+
+
+def protein_motif(shorthand):
+    ''' Returns a regex object useful for matching a protein motif. '''
+    shortset = list(_protein_motif(shorthand))
+    s = len(shortset)
+
+    return s, re.compile('(?<=(' + ''.join(['[{}]'.format('|'.join(i))
+                               for i in shortset]) + '))')

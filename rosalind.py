@@ -159,3 +159,17 @@ def problem_lia():
     with f:
         k, n = [int(i) for i in f.next().split()]
         lineoutput(lia(k, n))
+
+
+def problem_mprt():
+    ''' http://rosalind.info/problems/mprt/ '''
+    from solutions.mprt import mprt
+    from rutility.parsers import uniprot
+    f = readfile('rosalind_mprt.txt')
+    with f:
+        for line in f:
+            prot = uniprot(line.strip())
+            locations = mprt(prot.data, 'N{P}[ST]{P}')
+            if locations:
+                lineoutput(line.strip())
+                listoutput(locations)
