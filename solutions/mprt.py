@@ -21,4 +21,3 @@ def mprt(prot, shorthand):
     n, motif = protein_motif(shorthand)
     matches = re.finditer(motif, prot)
     return [m.end() - n + 1 for m in matches]
-
