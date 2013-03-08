@@ -117,5 +117,7 @@ def protein_motif(shorthand):
     shortset = list(_protein_motif(shorthand))
     s = len(shortset)
 
-    return s, re.compile('(?<=(' + ''.join(['[{}]'.format('|'.join(i))
-                               for i in shortset]) + '))')
+    return s, re.compile('(?<=(' +
+                         ''.join(['[{}]'.format('|'.join(i))for
+                                  i in shortset])
+                         + '))')
