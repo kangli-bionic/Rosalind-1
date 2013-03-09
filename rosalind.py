@@ -173,3 +173,12 @@ def problem_mprt():
             if locations:
                 lineoutput(line.strip())
                 listoutput(locations)
+
+
+def problem_fibd():
+    ''' http://rosalind.info/problems/fibd/ '''
+    from solutions.fibd import fibd
+    f = readfile('rosalind_fibd.txt')
+    with f:
+        m, n = [int(i) for i in f.next().split()]
+        lineoutput(fibd(m, n))
