@@ -182,3 +182,13 @@ def problem_fibd():
     with f:
         m, n = [int(i) for i in f.next().split()]
         lineoutput(fibd(m, n))
+
+
+def problem_mrna():
+    ''' http://rosalind.info/problems/mrna/ '''
+    from solutions.mrna import mrna
+    f = readfile('rosalind_mrna.txt')
+    with f:
+        prot = f.next().strip()
+        lineoutput(mrna(prot) % 1000000)
+
