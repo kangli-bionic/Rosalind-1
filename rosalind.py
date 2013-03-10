@@ -210,3 +210,26 @@ def problem_prtm():
     f = readfile('rosalind_prtm.txt')
     with f:
         lineoutput(prtm(f.next().strip()))
+
+
+def problem_revp():
+    ''' http://rosalind.info/problems/revp/ '''
+    from solutions.revp import revp
+    from rutility.parsers import fasta
+    f = readfile('rosalind_revp.txt')
+    with f:
+        iterfasta = fasta(f)
+        for result in revp(iterfasta.next().data):
+            listoutput(result)
+
+
+def problem_splc():
+    ''' http://rosalind.info/problems/splc/  '''
+    from solutions.splc import splc
+    from rutility.parsers import fasta
+    f = readfile('rosalind_splc.txt')
+    with f:
+        iterfasta = fasta(f)
+        dna = iterfasta.next().data
+        introns = [i.data for i in list(iterfasta)]
+        lineoutput(splc(dna, introns))
