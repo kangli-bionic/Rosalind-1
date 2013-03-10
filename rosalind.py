@@ -202,3 +202,11 @@ def problem_orf():
         frames = orf(fasta(f).next().data)
         for frame in frames:
             lineoutput(frame)
+
+
+def problem_prtm():
+    ''' http://rosalind.info/problems/prtm/ '''
+    from solutions.prtm import prtm
+    f = readfile('rosalind_prtm.txt')
+    with f:
+        lineoutput(prtm(f.next().strip()))
