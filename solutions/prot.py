@@ -2,7 +2,7 @@ from rutility.maps import rna_codons
 from rutility.parsers import triplets
 
 
-def prot(rna):
+def prot(rna, stop=True):
     ''' Protein Translation
 
     Given: An RNA string s corresponding to a strand of mRNA
@@ -17,7 +17,7 @@ def prot(rna):
     result = []
     for triplet in triplets(rna):
         amino = rna_codons[triplet]
-        if amino == 'Stop':
+        if amino == '$' and stop:
             return "".join(result)
         else:
             result.append(amino)

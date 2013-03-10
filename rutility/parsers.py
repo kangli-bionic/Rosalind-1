@@ -86,7 +86,7 @@ def _protein_motif(shorthand):
     sh = iter(shorthand)
 
     codons = set(rna_codons.values())
-    codons.remove('Stop')
+    codons.remove('$')
     include, exclude = set('[]'), set('{}')
 
     temp = []

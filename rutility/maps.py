@@ -16,13 +16,13 @@ rna_codons = {'GUC': 'V', 'ACC': 'T', 'GUA': 'V', 'GUG': 'V',
               'UGU': 'C', 'GGU': 'G', 'UCU': 'S', 'GCG': 'A',
               'UGC': 'C', 'CAG': 'Q', 'GAU': 'D', 'UAU': 'Y',
               'CGG': 'R', 'UCG': 'S', 'AGG': 'R', 'GGG': 'G',
-              'UCC': 'S', 'UCA': 'S', 'UAA': 'Stop', 'GGA': 'G',
+              'UCC': 'S', 'UCA': 'S', 'UAA': '$', 'GGA': 'G',
               'UAC': 'Y', 'GAC': 'D', 'GAA': 'E', 'AUA': 'I',
               'GCA': 'A', 'CUU': 'L', 'GGC': 'G', 'AUG': 'M',
-              'UGA': 'Stop', 'CUG': 'L', 'GAG': 'E', 'CUC': 'L',
+              'UGA': '$', 'CUG': 'L', 'GAG': 'E', 'CUC': 'L',
               'AGA': 'R', 'CUA': 'L', 'GCC': 'A', 'AAA': 'K',
               'AAG': 'K', 'CAA': 'Q', 'UUU': 'F', 'CGU': 'R',
-              'CGA': 'R', 'GCU': 'A', 'UAG': 'Stop', 'AUU': 'I',
+              'CGA': 'R', 'GCU': 'A', 'UAG': '$', 'AUU': 'I',
               'UUG': 'L', 'UUA': 'L', 'CGC': 'R', 'UUC': 'F'}
 
 hybrid_mating = {'h': 'dhhr', 'r': 'hhrr', 'd': 'ddhh'}

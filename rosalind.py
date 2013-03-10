@@ -192,3 +192,13 @@ def problem_mrna():
         prot = f.next().strip()
         lineoutput(mrna(prot) % 1000000)
 
+
+def problem_orf():
+    ''' http://rosalind.info/problems/orf/ '''
+    from solutions.orf import orf
+    from rutility.parsers import fasta
+    f = readfile('rosalind_orf.txt')
+    with f:
+        frames = orf(fasta(f).next().data)
+        for frame in frames:
+            lineoutput(frame)
