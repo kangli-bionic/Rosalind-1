@@ -233,3 +233,14 @@ def problem_splc():
         dna = iterfasta.next().data
         introns = [i.data for i in list(iterfasta)]
         lineoutput(splc(dna, introns))
+
+
+def problem_lexf():
+    ''' http://rosalind.info/problems/lexf/ '''
+    from solutions.lexf import lexf
+    f = readfile('rosalind_lexf.txt')
+    with f:
+        lex = f.next().strip()
+        perm = int(f.next())
+        for p in lexf(lex, perm):
+            lineoutput(p)
